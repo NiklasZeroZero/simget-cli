@@ -5,7 +5,7 @@
 
 namespace SimGet::CLI {
 
-    int main(int argc, char *argv[]) {
+    int execute(int argc, char *argv[]) {
 
         if( argc <= 1 ) {
             return Command::HelpCommand::main(argc, argv);
@@ -29,6 +29,10 @@ namespace SimGet::CLI {
             return Command::ShowCommand::main(argc, argv);
         }
 
+        if( command == "update" ) {
+            return Command::UpdateCommand::main(argc, argv);
+        }
+
         if( command == "install" ) {
             return Command::InstallCommand::main(argc, argv);
         }
@@ -46,6 +50,11 @@ namespace SimGet::CLI {
         std::cout << "simget: '" << command << "' is not a simget command. See 'simget help'." << std::endl;
         return 0;
 
+    }
+
+    int main(int argc, char *argv[]) {
+        int exitCode = execute(argc, argv);
+        return exitCode;
     }
 
 }
