@@ -1,76 +1,50 @@
 #include <iostream>
 #include <string>
 
-namespace SimGet {
+#include <Commands.h>
 
-    int versionCode = 1;
-    std::string versionName = "0.0.1";
+namespace SimGet::CLI {
 
-    namespace CLI {
+    int main(int argc, char *argv[]) {
 
-        void printHelp() {
-
-            std::cout
-                << "usage: simget <command> [<args>]\n\n"
-                << "These are all possible simget commands:\n\n"
-                << "version         Display information about the installed version of simget\n"
-                << "help            Display this help information\n"
-                << "search          Serach your installed repositories for a package by metadata\n"
-                << "show            Display Information about a package\n"
-                << "install         Install a Package\n"
-                << "export          export your currently installed Packages into a file\n"
-                << "import          import all packages from file \n"
-                << std::endl; 
+        if( argc <= 1 ) {
+            return Command::HelpCommand::main(argc, argv);
         }
 
-        int main(int argc, char *argv[]) { 
+        std::string command = argv[1];
 
-            if( argc <= 1 ) {
-                printHelp();
-                return 0;
-            }
+        if( command == "version" || command == "--version" || command == "v" ) {
+            return Command::VersionCommand::main(argc, argv);
+        }
 
-            std::string command = argv[1];
+        if( command == "help" || command == "--help" || command == "?" ) {
+            return Command::HelpCommand::main(argc, argv);
+        }
 
-            if( command == "version" || command == "--version" || command == "v" ) {
-                std::cout << "simget version " << SimGet::versionName << std::endl;
-                return 0;
-            }
+        if( command == "search" ) {
+            return Command::SearchCommand::main(argc, argv);
+        }
 
-            if( command == "help" || command == "--help" || command == "?" ) {
-                printHelp();
-                return 0;
-            }
+        if( command == "show" ) {
+            return Command::ShowCommand::main(argc, argv);
+        }
 
-            if( command == "search" ) {
-                std::cout << "simget: This command is currently unsupported." << std::endl;
-                return 0;
-            }
+        if( command == "install" ) {
+            return Command::InstallCommand::main(argc, argv);
+        }
 
-            if( command == "show" ) {
-                std::cout << "simget: This command is currently unsupported." << std::endl;
-                return 0;
-            }
-
-            if( command == "install" ) {
-                std::cout << "simget: This command is currently unsupported." << std::endl;
-                return 0;
-            }
-
-            if( command == "export" ) {
-                std::cout << "simget: This command is currently unsupported." << std::endl;
-                return 0;
-            }
-
-            if( command == "import" ) {
-                std::cout << "simget: This command is currently unsupported." << std::endl;
-                return 0;
-            }
-
-            std::cout << "simget: '" << command << "' is not a simget command. See 'simget help'." << std::endl;
+        if( command == "export" ) {
+            return Command::ExportCommand::main(argc, argv);
             return 0;
-
         }
+
+        if( command == "import" ) {
+            return Command::ImportCommand::main(argc, argv);
+            return 0;
+        }
+
+        std::cout << "simget: '" << command << "' is not a simget command. See 'simget help'." << std::endl;
+        return 0;
 
     }
 
