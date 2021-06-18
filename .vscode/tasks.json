@@ -16,7 +16,20 @@
         {
             "label": "clean",
             "type": "shell",
-            "command": "make clean"
-        }
+            "command": "make clean",
+            "problemMatcher": []
+        },
+        {
+            "label": "build unix",
+            "type": "shell",
+            "command": "make clean && make CC=gcc CXX=g++",
+            "problemMatcher": []
+        },
+        {
+            "label": "build windows",
+            "type": "shell",
+            "command": "make clean && make CC=x86_64-w64-mingw32-gcc CXX=x86_64-w64-mingw32-g++",
+            "problemMatcher": []
+        },
     ]
 }
