@@ -3,8 +3,6 @@ TARGET_EXEC ?= simget
 BUILD_DIR ?= ./build
 SRC_DIRS ?= ./src
 
-CC := g++
-
 SRCS := $(shell find $(SRC_DIRS) -name *.cpp -or -name *.c -or -name *.s)
 OBJS := $(SRCS:%=$(BUILD_DIR)/%.o)
 DEPS := $(OBJS:.o=.d)
@@ -12,10 +10,11 @@ DEPS := $(OBJS:.o=.d)
 INC_DIRS := $(shell find $(SRC_DIRS) -type d)
 INC_FLAGS := $(addprefix -I,$(INC_DIRS))
 
+LDFLAGS := -static -static-libgcc -static-libstdc++
 CPPFLAGS ?= $(INC_FLAGS) -MMD -MP
 
 $(BUILD_DIR)/$(TARGET_EXEC): $(OBJS)
-	$(CC) $(OBJS) -o $@ $(LDFLAGS)
+	$(CXX) $(OBJS) -o $@ $(LDFLAGS)
 
 # assembly
 $(BUILD_DIR)/%.s.o: %.s
