@@ -1,8 +1,11 @@
 #include <iostream>
 
+//  Print help information
+//      Syntax:             'simget help [<command>]'
+
 namespace SimGet::CLI::Command::HelpCommand {
 
-    int main(int argc, char *argv[]) {
+    int execute(int argc, char *argv[]) {
         std::cout
                 << "usage: simget <command> [<args>]\n\n"
                 << "These are all possible simget commands:\n\n"

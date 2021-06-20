@@ -1,5 +1,7 @@
+#pragma once
+
 namespace SimGet::CLI::Command::VersionCommand {
 
-    int main(int argc, char *argv[]);
+    int execute(int argc, char *argv[]);
 
 }

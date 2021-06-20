@@ -1,9 +1,6 @@
-#include <iostream>
-#include <string>
+#pragma once
 
 namespace SimGet {
-
     extern const int versionCode;
-    extern const std::string versionName;
-
+    extern const char* versionName;
 }

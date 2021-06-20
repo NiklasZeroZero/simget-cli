@@ -1,13 +1,14 @@
 #include <iostream>
 
-#include <Config.h>
+#include <Repository.h>
 
-//  Wanted behavior:
-//      git pull [<repos>]
+//  Update one/all installed packages
+//      Syntax:                 'simget update [<PackageIdentifier>]'
 
 namespace SimGet::CLI::Command::UpdateCommand {
 
-    int main(int argc, char *argv[]) {
+    int execute(int argc, char *argv[]) {
+        std::cout << "simget: This command is currently unsupported." << std::endl;
         return 0;
     }
 

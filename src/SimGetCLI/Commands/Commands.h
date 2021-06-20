@@ -1,3 +1,5 @@
+#pragma once
+
 #include <VersionCommand.h>
 #include <HelpCommand.h>
 #include <SearchCommand.h>
