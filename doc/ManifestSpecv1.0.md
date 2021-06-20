@@ -26,14 +26,14 @@ The publisher and application folders MUST match the values used to define the I
 The version in the folder name MUST match the version field value in the YAML file.  See PackageVersion: in the YAML for more detail.
 
 There is one type of manifests. A single file manifest (singleton). 
-[JSON schemas](https://github.com/NiklasZeroZero/simget-cli/schemas/JSON/manifests/v1.0.0) have been provided 
+[JSON schemas](https://github.com/NiklasZeroZero/simget-cli/blob/main/schemas/JSON/manifests/v1.0.0) have been provided 
 to help strongly type attributes and requirements.
 
 ## YAML Syntax
 Each field in the file must be PascalCased and cannot be duplicated.
 
 ## Minimal singleton YAML file example
-As specified in the [singleton JSON schema](https://github.com/NiklasZeroZero/simget-cli/schemas/JSON/manifests/v1.0.0/manifest.singleton.1.0.0.json),
+As specified in the [singleton JSON schema](https://github.com/NiklasZeroZero/simget-cli/blob/main/schemas/JSON/manifests/v1.0.0/manifest.singleton.1.0.0.json),
 only a number of fields are required. The minimal supported YAML file would look like the example below. The singleton format is only valid for packages containing
 a single installer and a single locale.
 
